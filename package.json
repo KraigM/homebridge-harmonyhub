@@ -10,5 +10,8 @@
     "url": "git://github.com/nfarina/homebridge.git"
   },
   "license": "ISC",
-  "dependencies": null
+  "dependencies": {
+    "harmonyhubjs-client": "^1.1.4",
+    "harmonyhubjs-discover": "git+https://github.com/swissmanu/harmonyhubjs-discover.git"
+  }
 }
