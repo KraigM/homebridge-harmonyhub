@@ -1,10 +1,10 @@
 {
-  "name": "homebridge-legacy-plugins",
-  "description": "Legacy plugins for homebridge: https://github.com/nfarina/homebridge",
+  "name": "homebridge-harmonyhub",
+  "description": "Logitech Harmony Hub plugin for homebridge: https://github.com/kraigm/homebridge-harmonyhub",
   "version": "0.0.3",
   "repository": {
     "type": "git",
-    "url": "git://github.com/nfarina/homebridge-legacy-plugins.git"
+    "url": "git://github.com/kraigm/homebridge-harmonyhub.git"
   },
   "license": "ISC",
   "preferGlobal": true,

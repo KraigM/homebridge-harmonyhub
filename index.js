@@ -1,4 +1,3 @@
-'use strict';
 
 // Logitech Harmony Remote Platform Shim for HomeBridge
 // Based on the Domoticz Platform Shim for HomeBridge by Joep Verhaeg (http://www.joepverhaeg.nl)
@@ -16,18 +15,29 @@
 // The default code for all HomeBridge accessories is 031-45-154.
 //
 
+var Service, Characteristic, Accessory, uuid;
 
-var types = require("../api").homebridge.hapLegacyTypes;
+module.exports = function(homebridge) {
+  Service = homebridge.hap.Service;
+  Characteristic = homebridge.hap.Characteristic;
+  Accessory = homebridge.hap.Accessory;
+  uuid = homebridge.hap.uuid;
+
+  var acc = LogitechHarmonyActivityAccessory.prototype;
+  inherits(LogitechHarmonyActivityAccessory, Accessory);
+  LogitechHarmonyActivityAccessory.prototype.parent = Accessory.prototype;
+  for (var mn in acc) {
+    LogitechHarmonyActivityAccessory.prototype[mn] = acc[mn];
+  }
+
+  homebridge.registerPlatform("homebridge-harmonyhub", "HarmonyHub", LogitechHarmonyPlatform);
+};
 
 var harmonyDiscover = require('harmonyhubjs-discover');
 var harmony = require('harmonyhubjs-client');
 
 var _harmonyHubPort = 61991;
 
-var Service = require("../api").homebridge.hap.Service;
-var Characteristic = require("../api").homebridge.hap.Characteristic;
-var Accessory = require("../api").homebridge.hap.Accessory;
-var uuid = require("../api").homebridge.hap.uuid;
 var inherits = require('util').inherits;
 var queue = require('queue');
 
@@ -245,8 +255,7 @@ function LogitechHarmonyActivityAccessory (log, details, changeCurrentActivity) 
       .on('set', this.setPowerState.bind(this));
 
 }
-inherits(LogitechHarmonyActivityAccessory, Accessory);
-LogitechHarmonyActivityAccessory.prototype.parent = Accessory.prototype;
+
 LogitechHarmonyActivityAccessory.prototype.getServices = function() {
   return this.services;
 };
@@ -262,6 +271,4 @@ LogitechHarmonyActivityAccessory.prototype.updateActivityState = function (curre
 LogitechHarmonyActivityAccessory.prototype.setPowerState = function (state, callback) {
   this.changeCurrentActivity(state ? this.id : null, callback);
 };
-
-module.exports.platform = LogitechHarmonyPlatform;
 
