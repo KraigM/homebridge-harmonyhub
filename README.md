@@ -16,7 +16,7 @@ Configuration sample:
  ```
 	"platforms": [
 		{
-			"platform": "LogitechHarmony",
+			"platform": "HarmonyHub",
 			"name": "Living Room Harmony Hub"
 		}
 	]
