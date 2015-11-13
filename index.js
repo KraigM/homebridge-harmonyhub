@@ -1,20 +1,4 @@
 
-// Logitech Harmony Remote Platform Shim for HomeBridge
-// Based on the Domoticz Platform Shim for HomeBridge by Joep Verhaeg (http://www.joepverhaeg.nl)
-// Wriiten by John Wells (https://github.com/madmod)
-//
-// Remember to add platform to config.json. Example:
-// "platforms": [
-//     {
-//         "platform": "LogitechHarmony",
-//         "name": "Logitech Harmony"
-//     }
-// ],
-//
-// When you attempt to add a device, it will ask for a "PIN code".
-// The default code for all HomeBridge accessories is 031-45-154.
-//
-
 var Service, Characteristic, Accessory, uuid;
 
 module.exports = function(homebridge) {
