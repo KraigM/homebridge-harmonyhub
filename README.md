@@ -7,7 +7,7 @@ Currently, this plugin displays Activities as switches.  This way you can turn o
 
 1. Install homebridge using: npm install -g homebridge
 2. Install this plugin using: npm install -g homebridge-harmonyhub
-3. Update your configuration file. See sampleconfig.json in this repository for a sample. 
+3. Update your configuration file. See sample config.json snippet below. 
 
 # Configuration
 
