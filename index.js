@@ -176,13 +176,15 @@ LogitechHarmonyPlatform.prototype = {
       setTimeout(function() {
         setInterval(function() {
           executeOnHub(function(h, cb) {
-            plat.log("Refresh Status");
             h.getCurrentActivity()
                 .then(function(currentActivity){
                   cb();
                   updateCurrentActivity(currentActivity);
                 })
-                .catch(cb);
+                .catch(function (error) {
+                    plat.log("Error refreshing status: " + error);
+                    cb(error)
+                });
           });
         }, 20000);
       }, 5000);
