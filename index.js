@@ -159,6 +159,7 @@ LogitechHarmonyPlatform.prototype = {
             .catch(function (err) {
               cb();
               isChangingActivity = false;
+              if (tout) clearTimeout(tout);
               plat.log('Failed setting activity to ' + nextActivity + ' with error ' + err);
               if (callback) callback(err);
             });
