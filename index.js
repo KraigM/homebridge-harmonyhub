@@ -140,7 +140,7 @@ LogitechHarmonyPlatform.prototype = {
     var isChangingActivity = false;
     function changeCurrentActivity(nextActivity, callback) {
       if (!nextActivity) {
-        nextActivity = -1;
+        nextActivity = '-1';
       }
       plat.log('Queue activity to ' + nextActivity);
       executeOnHub(function(h, cb) {
