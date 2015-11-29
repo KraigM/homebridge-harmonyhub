@@ -145,6 +145,7 @@ LogitechHarmonyPlatform.prototype = {
       plat.log('Queue activity to ' + nextActivity);
       executeOnHub(function(h, cb) {
         plat.log('Set activity to ' + nextActivity);
+        isChangingActivity = true;
         var tout;
         h.startActivity(nextActivity)
             .then(function () {
