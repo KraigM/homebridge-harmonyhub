@@ -206,8 +206,12 @@ LogitechHarmonyPlatform.prototype = {
 			}, 5000);
 		}
 
+		var isRefreshPending = false;
 		function refreshCurrentActivity() {
+			if (isRefreshPending) return;
+			isRefreshPending = true;
 			executeOnHub(function (h, cb) {
+				isRefreshPending = false;
 				plat.debug("Refreshing current activity");
 				h.getCurrentActivity()
 					.then(function (currentActivity) {
@@ -218,7 +222,7 @@ LogitechHarmonyPlatform.prototype = {
 						plat.log("Error refreshing status: " + error);
 						cb(error)
 					});
-			});
+			}, refreshCurrentActivity);
 		}
 
 		function executeOnHub(func, funcMaxTimeout) {
