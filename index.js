@@ -2,6 +2,7 @@
 var Service, Characteristic, Accessory, uuid;
 
 module.exports = function(homebridge) {
+
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
   Accessory = homebridge.hap.Accessory;
@@ -36,6 +37,7 @@ function sortByKey (array, key) {
 
 function LogitechHarmonyPlatform (log, config) {
   this.log = log;
+  this.debug = log.debug;
   this.ip_address = config['ip_address'];
 };
 
@@ -133,7 +135,7 @@ LogitechHarmonyPlatform.prototype = {
     }
 
     function createActivityAccessory(activity) {
-      var accessory = new LogitechHarmonyActivityAccessory(plat.log, activity, changeCurrentActivity.bind(plat), -1);
+      var accessory = new LogitechHarmonyActivityAccessory(plat.log, activity, changeCurrentActivity.bind(plat));
       return accessory;
     }
 
@@ -224,10 +226,10 @@ LogitechHarmonyPlatform.prototype = {
             createClient(hubIP, function(err, newHub){
               if (err) throw err;
               hub = newHub;
+              cb();
               if (funcMaxTimeout) {
                 funcMaxTimeout();
               }
-              cb();
             });
           }, 60000);
           func(hub, function(){
