@@ -191,20 +191,23 @@ LogitechHarmonyPlatform.prototype = {
     // prevent connection from closing
     function keepAliveRefreshLoop() {
       setTimeout(function() {
-        setInterval(function() {
-          executeOnHub(function(h, cb) {
-            h.getCurrentActivity()
-                .then(function(currentActivity){
-                  cb();
-                  updateCurrentActivity(currentActivity);
-                })
-                .catch(function (error) {
-                    plat.log("Error refreshing status: " + error);
-                    cb(error)
-                });
-          });
-        }, 20000);
+        setInterval(refreshCurrentActivity, 20000);
       }, 5000);
+    }
+
+    function refreshCurrentActivity() {
+      executeOnHub(function(h, cb) {
+        plat.debug("Refreshing current activity");
+        h.getCurrentActivity()
+            .then(function(currentActivity){
+              cb();
+              updateCurrentActivity(currentActivity);
+            })
+            .catch(function (error) {
+              plat.log("Error refreshing status: " + error);
+              cb(error)
+            });
+      });
     }
 
     function executeOnHub(func, funcMaxTimeout)
