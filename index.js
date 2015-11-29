@@ -220,7 +220,7 @@ LogitechHarmonyPlatform.prototype = {
               }
               cb();
             });
-          }, 30000);
+          }, 60000);
           func(hub, function(){
             clearTimeout(tout);
             cb();
