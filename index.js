@@ -142,6 +142,11 @@ LogitechHarmonyPlatform.prototype = {
       if (!nextActivity) {
         nextActivity = '-1';
       }
+      var handleErr = function(err) {
+        isChangingActivity = false;
+        if (callback) callback(err);
+        refreshCurrentActivity();
+      };
       plat.log('Queue activity to ' + nextActivity);
       executeOnHub(function(h, cb) {
         plat.log('Set activity to ' + nextActivity);
@@ -158,10 +163,9 @@ LogitechHarmonyPlatform.prototype = {
             })
             .catch(function (err) {
               cb();
-              isChangingActivity = false;
               if (tout) clearTimeout(tout);
               plat.log('Failed setting activity to ' + nextActivity + ' with error ' + err);
-              if (callback) callback(err);
+              handleErr(err);
             });
 
         // Gives the hub 2 seconds to change the activity (or fail) but otherwise assumes success
@@ -178,7 +182,7 @@ LogitechHarmonyPlatform.prototype = {
           }
         }, 2000);
       }, function(){
-        callback(Error("Set activity failed too many times"));
+        handleErr(new Error("Set activity failed too many times"));
       });
     }
 
