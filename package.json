@@ -18,7 +18,7 @@
   "dependencies": {
     "debug": "^2.2.0",
     "harmonyhubjs-client": "^1.1.6",
-    "harmonyhubjs-discover": "git+https://github.com/swissmanu/harmonyhubjs-discover.git",
+    "harmonyhubjs-discover": "^1.0.2",
     "inherits": "^2.0.1",
     "node-stringprep": "^0.7.2",
     "node-xmpp-client": "1.0.0-alpha23",
