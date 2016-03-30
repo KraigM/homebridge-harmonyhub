@@ -5,13 +5,17 @@ module.exports = function (homebridge) {
 	Characteristic = homebridge.hap.Characteristic;
 	Accessory = homebridge.hap.Accessory;
 	uuid = homebridge.hap.uuid;
+	var exportedTypes = {
+		Service: homebridge.hap.Service,
+		Characteristic: homebridge.hap.Characteristic,
+		Accessory: homebridge.hap.Accessory,
+		uuid: homebridge.hap.uuid
+	};
+	exportedTypes.AccessoryBase = require('./lib/accessory-base')(exportedTypes);
+	exportedTypes.HubAccessoryBase = require('./lib/hub-accessory-base')(exportedTypes);
+	exportedTypes.ActivityAccessory = require('./lib/activity-accessory')(exportedTypes);
+	exportedTypes.Hub = require('./lib/hub')(exportedTypes);
+	exportedTypes.HomePlatform = require('./lib/home-platform')(exportedTypes);
 
-	var acc = LogitechHarmonyActivityAccessory.prototype;
-	inherits(LogitechHarmonyActivityAccessory, Accessory);
-	LogitechHarmonyActivityAccessory.prototype.parent = Accessory.prototype;
-	for (var mn in acc) {
-		LogitechHarmonyActivityAccessory.prototype[mn] = acc[mn];
-	}
-
-	homebridge.registerPlatform("homebridge-harmonyhub", "HarmonyHub", LogitechHarmonyPlatform);
+	homebridge.registerPlatform("homebridge-harmonyhub", "HarmonyHub", exportedTypes.HomePlatform);
 };
