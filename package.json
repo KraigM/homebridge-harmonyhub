@@ -1,7 +1,7 @@
 {
   "name": "homebridge-harmonyhub",
   "description": "Logitech Harmony Hub plugin for HomeBridge",
-  "version": "0.1.1",
+  "version": "0.2.0-alpha",
   "repository": {
     "type": "git",
     "url": "git://github.com/kraigm/homebridge-harmonyhub.git"
@@ -13,7 +13,7 @@
   ],
   "engines": {
     "node": ">=0.12.0",
-    "homebridge": ">=0.2.5"
+    "homebridge": ">=0.3.1"
   },
   "dependencies": {
     "bluebird": "^3.3.4",
