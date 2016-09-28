@@ -38,6 +38,8 @@ function LogitechHarmonyPlatform(log, config) {
 	this.log = log;
 	this.debug = log.debug;
 	this.ip_address = config['ip_address'];
+    this.email = config['email'];
+    this.password = config['password'];
 };
 
 
@@ -97,7 +99,7 @@ LogitechHarmonyPlatform.prototype = {
 		// Connect to a Harmony hub
 		function createClient(ipAddress, callback) {
 			plat.log("Connecting to Logitech Harmony remote hub...");
-			harmony(ipAddress)
+			harmony(plat.email, plat.password, ipAddress)
 				.then(function (client) {
 					plat.log("Connected to Logitech Harmony remote hub");
 					callback(null, client, ipAddress);
