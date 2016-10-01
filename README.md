@@ -26,5 +26,3 @@ Fields:
 
 * "platform": Must always be "HarmonyHub" (required)
 * "name": Can be anything (required)
-* "ip_address": IP Address of your harmony hub like "10.0.1.4" or "192.168.1.12" (optional, automatically discovered if not specified)
-
