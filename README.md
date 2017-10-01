@@ -55,3 +55,4 @@ Fields:
 
 * "platform": Must always be "HarmonyHub" (required)
 * "name": Can be anything (used in logs)
+* "disableVolumeControl": If true, the volume control functionality will be removed (optional)
