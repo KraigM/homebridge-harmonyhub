@@ -56,3 +56,12 @@ Fields:
 * "platform": Must always be "HarmonyHub" (required)
 * "name": Can be anything (used in logs)
 * "disableVolumeControl": If true, the volume control functionality will be removed (optional)
+* "email": Email used for Harmony Link account (only for Harmony Link, [see below](#harmony-link))
+* "password": Password used for Harmony Link account (only for Harmony Link, [see below](#harmony-link))
+
+
+### Harmony Link
+[Harmony Link](http://support.logitech.com/en_us/product/harmony-link) is a discontinued product that was replaced by 
+Harmony Hub (and subsequent products).  Harmony Link does not use the same api as the newer devices and thus requires 
+a few some different configurations.  The Harmony Link api requires the email and password associated with the device 
+to be specified as described in Fields above.
