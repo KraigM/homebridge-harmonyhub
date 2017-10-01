@@ -26,3 +26,4 @@ Fields:
 
 * "platform": Must always be "HarmonyHub" (required)
 * "name": Can be anything (required)
+* "disableVolumeControl": If true, the volume control functionality will be removed (optional)
