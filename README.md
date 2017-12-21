@@ -55,3 +55,15 @@ Fields:
 
 * "platform": Must always be "HarmonyHub" (required)
 * "name": Can be anything (used in logs)
+* "discoverOptions": an optional object of options to be passed to [harmonyhubjs-discover](https://github.com/swissmanu/harmonyhubjs-discover). On a system with multiple interfaces, or certain operating systems, you need to specify the broadcast address for the network the Harmony Hub is connected to. If your Hub is connected to the network 192.168.1.0/24, then you need to specify the address as 192.168.1.255:
+  ```json
+  "platforms": [
+		{
+			"platform": "HarmonyHub",
+			"name": "Harmony Hub",
+			"discoverOptions": {
+				"address": "192.168.1.255"
+			}
+		}
+	]
+  ```
