@@ -55,3 +55,4 @@ Fields:
 
 * "platform": Must always be "HarmonyHub" (required)
 * "name": Can be anything (used in logs)
+* "skipIfSameState": Can be true or false. If true homebridge will not turn on/off activities if they already are in the desired state (optional, defaults to false)
